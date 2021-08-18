@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.objectFactory" value="spring" />
+	<package name="default" extends="json-default">
+		<interceptors>
+			<interceptor name="log"
+				class="com.strut.ProfileInterceptor" />
+		</interceptors>
+
+		<action name="strutlogin" 
+		class="com.strut.TestStrutAction"
+			method="login">
+			<result name="success">welcome.jsp</result>
+			<result name="failure">error.jsp</result> 
+		</action>
+		
+
+		<action name="test1" 
+		class="com.strut.ProfileAction"
+			method="testing2">
+			<result name="success">welcome.jsp</result>
+		</action>
+		
+		<!--  struts redirect/forward/text stream/json  -->
+		<action name="loginweb" class="com.strut.ProfileAction"
+			method="execute">
+			<!-- default stack is mandatory when writing user defined interceptor -->
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="log" />
+			<result name="success">welcome.jsp</result>
+			<result type="redirect" name="error">error.jsp</result> <!-- type = "redirect" to redirect -->
+		</action>		
+		<action name="loginjson" class="com.strut.ProfileAction"
+			method="jsonResponse">
+			<result name="success" type="json"></result>
+			<result name="error" type="json"></result>
+		</action>		
+		<action name="logintext" class="com.strut.ProfileAction"
+			method="textResponse">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!--  struts redirect/forward/text stream/json  -->
+		
+		<!--  Test spring / jpa code -->
+		<action name="register" class="com.strut.ProfileAction"
+			method="register">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="update" class="com.strut.ProfileAction"
+			method="update">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="delete" class="com.strut.ProfileAction"
+			method="delete">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ml version="1.0" encoding="UTF-8"?> <!DOCTYPE struts PUBLIC "-//Apache 
+	Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd"> 
+	<struts> <constant name="struts.devMode" value="true" /> <constant name="struts.objectFactory" 
+	value="spring" /> <package name="default" extends="json-default"> <interceptors> 
+	<interceptor name="log" class="com.strut.LoggingIntercept" /> </interceptors> 
+	<action name="authenticate" class="com.strut.LoginAction" method="execute"> 
+	<interceptor-ref name="defaultStack" /> <interceptor-ref name="log" /> <result 
+	name="success">welcome.jsp</result> <result type="redirect" name="error">error.jsp</result> 
+	</action> <action name="reg" class="com.strut.LoginAction" method="register"> 
+	<result type="stream"> <param name="contentType">text/html</param> <param 
+	name="inputName">inputStream</param> </result> </action> <action name="upd" 
+	class="com.strut.LoginAction" method="update"> <result type="stream"> <param 
+	name="contentType">text/html</param> <param name="inputName">inputStream</param> 
+	</result> </action> <action name="del" class="com.strut.LoginAction" method="delete"> 
+	<result type="stream"> <param name="contentType">text/html</param> <param 
+	name="inputName">inputStream</param> </result> </action> <action name="jsonTest" 
+	class="com.strut.JSONAction" method="execute"> <result name="success" type="json"></result> 
+	</action> </package> </struts -->
