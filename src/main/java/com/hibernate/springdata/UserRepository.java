@@ -23,12 +23,12 @@ public interface UserRepository extends JpaRepository<UsersEntity, String> {
 	@Transactional
 	@Modifying
 	@Query("UPDATE UsersEntity u SET u.pwd=?2 WHERE u.uid= ?1")
-	public void update(String users,String password);
+	public int update(String users,String password);
 	
 	@Transactional
 	@Modifying
 	@Query("DELETE UsersEntity u WHERE u.uid= ?1")
-	public void delete(String users);
+	public int delete(String users);
 	//SQL
 	@Query(value="SELECT * FROM users WHERE user= ?1 and password=?2",nativeQuery = true)
 	public List<UsersEntity> nativeVerify(String users,String password);

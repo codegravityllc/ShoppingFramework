@@ -6,18 +6,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Welcome <s:property value = "firstName" />
+	Welcome <s:property value = "firstName" /> &nbsp; <s:property value = "lastName" /> 
 	
+	<s:textfield name="struttextbox" label="Strut text box" />
+	<input type="text" name="html text box"/>
 	
 </body>
 </html>
 
-<!--
+ <ul>
 
 	<s:append var="appendIterator">
-     	<s:param value="%{myList1}" />       
+     	<s:param value="%{myList1}" /> <s:param value="%{myList2}" />       
 	</s:append>
 	<s:iterator value="%{#appendIterator}">  
-	    <s:property />    
+	  <li>
+		  <s:property />    
+	  </li>
 	</s:iterator>
--->
+ </ul>
+ <img src="1.png"/>

@@ -16,7 +16,7 @@ import com.hibernate.springdata.UsersEntity;
 @Component
 public class ProfileAspect  {
 	
-	@Around("within(com.spring.beans.ProfileBean)")
+	@Around("execution(* com.spring.beans.ProfileBean.getProfile(java.lang.String))")
 	public UsersEntity getResponseTime(ProceedingJoinPoint  joinPoint) throws Exception{
 		// ******************** SECURITY *************************
 		String remoteAddress = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes())
